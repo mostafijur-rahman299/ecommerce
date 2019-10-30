@@ -247,7 +247,7 @@ GENDER_CHOICES = (
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_img = models.ImageField(upload_to="profile/", blank=True, null=True)
+    profile_img = models.ImageField(upload_to="profile/", blank=True , null=True)
     gender = models.CharField(max_length=50, choices=GENDER_CHOICES)
     mobile_number = models.CharField(max_length=20, blank=True, null=True)
 
