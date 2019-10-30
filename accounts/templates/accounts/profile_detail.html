@@ -10,7 +10,7 @@
             <div class="shadow p-3 mb-2 bg-white rounded">Hello,<br>
                 <b style="font-size:20px;color:#F57C00;">{{ request.user.full_name }}</b>
             </div>
-            {% if request.user.userprofile.profile_img.url %}
+            {% if request.user.userprofile.profile_img %}
                 <img src="{{ request.user.userprofile.profile_img.url }}"
                         alt="..." class="img-thumbnail">
             {% else %}
