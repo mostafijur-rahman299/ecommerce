@@ -13,6 +13,8 @@
             {% if request.user.userprofile.profile_img %}
                 <img src="{{ request.user.userprofile.profile_img.url }}"
                         alt="..." class="img-thumbnail">
+            {% else %}
+            <p>No profile image added.</p>
             {% endif %}
 
 
