@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, login_required
 # from django.contrib.auth.models import User
 from django.utils.http import is_safe_url
 from django.views.generic import CreateView, FormView, View
@@ -108,7 +108,7 @@ class UserLoginView(FormView):
         context = super(UserLoginView, self).get_context_data(*args, **kwargs)
         context['category_qs']=Category.objects.filter(active=True)
         return context 
-
+@login_required
 def user_logout(request):
     logout(request)
     messages.success(request, 'You loged out your account!')
@@ -171,7 +171,7 @@ def guest_user_register(request):
 
 
 # User Account detail 
-
+@login_required
 def user_profile_view(request):
     qs = Category.objects.filter(active=True)
     billing_obj, created = BillingProfile.objects.new_or_get(request)
@@ -197,7 +197,7 @@ def user_profile_view(request):
     return render(request, 'accounts/profile_detail.html', context)
 
 
-
+@login_required
 def order_list_view(request):
     qs = Category.objects.filter(active=True)
     billing_obj, created = BillingProfile.objects.new_or_get(request)
@@ -214,6 +214,7 @@ def order_list_view(request):
     }
     return render(request, 'accounts/order_list.html', context)
 
+@login_required
 def order_detail_view(request, order_id):
     qs = Category.objects.filter(active=True)
     billing_obj, created = BillingProfile.objects.new_or_get(request)
@@ -230,7 +231,7 @@ def order_detail_view(request, order_id):
     }
     return render(request, 'accounts/order_detail.html', context)
 
-
+@login_required
 def account_settings(request):
     qs = Category.objects.filter(active=True)
     userprofile = UserProfile.objects.get(user=request.user)
