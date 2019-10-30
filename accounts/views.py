@@ -48,7 +48,7 @@ class RegistrationVeiw(SuccessMessageMixin, CreateView):
     form_class = RegistrationForm
     template_name = 'accounts/register.html'
     success_url = '/accounts/login'
-    success_message = "Congratulation!now you are the member of depnox group."
+    success_message = "We sent an email to your accout with some instruction.Please check it and active account."
 
     
     def get_context_data(self, *args, **kwargs):

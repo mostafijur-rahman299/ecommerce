@@ -174,7 +174,7 @@ EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = 'depnox <sajib@gmail.com>'
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "http://depnox.herokuapp.com/"
 
 
 
