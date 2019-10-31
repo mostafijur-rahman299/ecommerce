@@ -114,9 +114,9 @@ class RegistrationForm(forms.ModelForm):
         # Save the provided password in hashed format
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
+        user.is_active = False
         if commit:
             user.save()
-            user.is_active = False
         return user
      
 Gen_choices = (
